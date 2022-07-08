@@ -1,3 +1,321 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+  margin: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
 body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+*::before,
+*::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html {
   font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: hsl(233deg, 12%, 13%);
+  display: flex;
+  text-align: center;
+  background-image: url(../images/bg-tablet-pattern.svg);
+  background-repeat: no-repeat;
+  background-position: 62vw 31.5rem;
+  background-size: 20rem;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 4vw;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+.btn {
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: inherit;
+}
+
+.btn-primary {
+  background-color: hsl(12deg, 88%, 59%);
+  color: hsl(13deg, 100%, 96%);
+  box-shadow: 0px 5px 10px 5px hsl(13deg, 100%, 96%);
+}
+
+.btn-inverse {
+  background-color: hsl(0deg, 0%, 98%);
+  color: hsl(12deg, 88%, 59%);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 2.125rem 2.5rem;
+  padding-inline: 2%;
+}
+.nav__logo {
+  width: 34%;
+  min-width: 30%;
+  margin-top: 0.5rem;
+}
+.nav__btn-desktop {
+  display: none;
+}
+.nav__btn-mobile {
+  padding: 1rem;
+  background-image: url(../images/icon-hamburger.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.nav__btn-mobile.active {
+  background-image: url(../images/icon-close.svg);
+}
+.nav__list {
+  background-color: hsl(13deg, 100%, 96%);
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 6.5rem;
+  padding: 2rem;
+  transform: translateX(120%);
+}
+.nav__list.active {
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.product {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-block: 0 6rem;
+}
+.product__header {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  padding-block: 0.25rem 0.125rem;
+}
+.product__copy {
+  font-size: 1rem;
+  padding-inline: 0.5rem;
+  line-height: 1.7;
+  padding-block: 0.125rem 1.875rem;
+}
+
+.difference {
+  display: flex;
+  flex-direction: column;
+  padding-block: 0 2rem;
+}
+.difference__header {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding-inline: 10vw;
+}
+.difference__copy {
+  font-size: 0.875rem;
+  padding-inline: 1.5rem;
+  line-height: 2;
+  padding-block: 0.751rem 1.875rem;
+}
+.difference__list {
+  width: 100%;
+  text-align: left;
+  counter-reset: section;
+}
+.difference__list-item {
+  position: relative;
+  margin-block: 0 2rem;
+}
+.difference__list-header::before {
+  counter-increment: section;
+  content: "0" counter(section);
+  padding: 0.751rem 1.52rem;
+  margin-right: 1rem;
+  border-radius: 1.5rem;
+  font-weight: 700;
+  background-color: hsl(12deg, 88%, 59%);
+  color: hsl(13deg, 100%, 96%);
+}
+.difference__list-header {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-block: 1rem 0;
+  background-color: hsl(13deg, 100%, 96%);
+  border-radius: 1.5rem;
+}
+.difference__list-header::after {
+  content: "";
+  position: absolute;
+  right: -4vw;
+  top: 0;
+  padding: 1.4rem 4vw;
+  background-color: hsl(13deg, 100%, 96%);
+}
+.difference__list-copy {
+  font-size: 0.875rem;
+  line-height: 2;
+  padding-block: 0.51rem;
+}
+
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testimonials__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.testimonials__slider {
+  width: 50%;
+  text-align: center;
+  overflow: hidden;
+}
+.testimonials__slider > a {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid hsl(12deg, 88%, 59%);
+  border-radius: 50%;
+}
+.testimonials__slider > a:active {
+  background-color: blue;
+}
+.testimonials__slides {
+  display: flex;
+  overflow-x: hidden;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.testimonials__slides > div {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-right: 50px;
+  padding-inline: 1rem;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 1.5s;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  body {
+    display: flex;
+    padding-inline: 4vw;
+    padding-block: 2rem;
+  }
+
+  .btn {
+    padding: 0.875rem 2rem;
+    border-radius: 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .nav__btn-mobile {
+    display: none;
+  }
+  .nav__btn-desktop {
+    display: block;
+  }
+  .nav__list {
+    position: relative;
+    top: unset;
+    right: unset;
+    transform: unset;
+    display: flex;
+  }
+
+  .product {
+    flex-direction: row;
+  }
 }/*# sourceMappingURL=style.css.map */
